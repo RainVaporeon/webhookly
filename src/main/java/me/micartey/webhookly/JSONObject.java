@@ -9,7 +9,7 @@ public class JSONObject {
 
     private final HashMap<String, Object> map = new HashMap<>();
 
-    void put(String key, Object value) {
+    public void put(String key, Object value) {
         if (value == null)
             return;
 

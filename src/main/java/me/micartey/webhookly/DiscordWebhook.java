@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import me.micartey.webhookly.embeds.EmbedObject;
+import me.micartey.webhookly.features.AllowedMentions;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class DiscordWebhook {
     private final String url;
 
     private String content, username, avatarUrl;
+    private AllowedMentions allowedMentions;
     private boolean tts;
 
     @SuppressWarnings("unused")
@@ -33,6 +35,7 @@ public class DiscordWebhook {
         json.put("username", this.username);
         json.put("avatar_url", this.avatarUrl);
         json.put("tts", this.tts);
+        json.put("allowed_mentions", this.allowedMentions.toJson());
 
         embeds: {
             if (this.embeds.isEmpty())
